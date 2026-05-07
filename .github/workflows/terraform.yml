@@ -12,16 +12,16 @@ on:
     paths:
       - terraform/**
 
- permissions:
-  id-token: write   # required to request the OIDC token
-  contents: read    # required to checkout the repo
+permissions:
+  id-token: write
+  contents: read
 
-  env:
+env:
   AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
 
-  jobs:
+jobs:
   terraform:
     name: "Apply Terraform code changes"
     runs-on: ubuntu-latest
